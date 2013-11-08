@@ -1,5 +1,7 @@
 package com.hanfeng.app.common.config;
 
+import com.hanfeng.app.route.AdminRoute;
+import com.hanfeng.app.route.FrontRoute;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -7,6 +9,7 @@ import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.core.JFinal;
+import com.jfinal.render.ViewType;
 
 /**
  * 
@@ -27,8 +30,10 @@ public class BlogConfig extends JFinalConfig{
 	 */
 	@Override
 	public void configConstant(Constants me) {
-		// TODO Auto-generated method stub
-		
+		// 开启开发模式
+		me.setDevMode(true);	
+		//设置默认视图
+		me.setViewType(ViewType.JSP);
 	}
 
 	/*
@@ -37,7 +42,8 @@ public class BlogConfig extends JFinalConfig{
 	 */
 	@Override
 	public void configRoute(Routes me) {
-		// TODO Auto-generated method stub
+		me.add(new FrontRoute());//前端路由
+		me.add(new AdminRoute());//后端路由
 		
 	}
 
