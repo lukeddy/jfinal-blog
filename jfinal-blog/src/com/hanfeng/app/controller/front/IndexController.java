@@ -1,4 +1,4 @@
-package com.hanfeng.app.controller.admin;
+package com.hanfeng.app.controller.front;
 
 import com.jfinal.core.Controller;
 

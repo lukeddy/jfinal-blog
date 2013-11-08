@@ -1,6 +1,6 @@
 package com.hanfeng.app.route;
 
-import com.hanfeng.app.controller.admin.IndexController;
+import com.hanfeng.app.controller.front.IndexController;
 import com.jfinal.config.Routes;
 
 /**
