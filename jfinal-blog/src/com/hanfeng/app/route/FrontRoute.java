@@ -1,5 +1,6 @@
 package com.hanfeng.app.route;
 
+import com.hanfeng.app.controller.admin.IndexController;
 import com.jfinal.config.Routes;
 
 /**
@@ -13,8 +14,7 @@ public class FrontRoute extends Routes{
 
 	@Override
 	public void config() {
-		// TODO Auto-generated method stub
-		
+		add("/",IndexController.class);		
 	}
 
 }
