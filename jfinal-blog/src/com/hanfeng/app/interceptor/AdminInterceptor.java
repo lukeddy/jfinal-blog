@@ -18,7 +18,8 @@ public class AdminInterceptor implements Interceptor{
 		//后台登陆判断
 		 Controller controller = ai.getController();
 		 User user = controller.getSessionAttr("user");//获取session
-		 if (user!=null && "/admin".equalsIgnoreCase(ai.getActionKey())) {
+//		 if (user!=null && "/admin".equalsIgnoreCase(ai.getActionKey())) {
+		 if (user!=null) {
 			 ai.invoke();
 		}else {
 			controller.render("/admin/login.html");

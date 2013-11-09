@@ -17,4 +17,7 @@ public class AdminController extends Controller{
     public void index(){
         render("/admin/index.html");
     }
+    public void test(){
+    	render("/admin/index2.html");
+    }
 }
