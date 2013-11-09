@@ -15,6 +15,7 @@ import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.core.JFinal;
+import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
@@ -96,7 +97,7 @@ public class BlogConfig extends JFinalConfig{
 	@Override
 	public void configInterceptor(Interceptors me) {
 		// TODO Auto-generated method stub
-		
+		me.add(new SessionInViewInterceptor());
 	}
 
 	/*
