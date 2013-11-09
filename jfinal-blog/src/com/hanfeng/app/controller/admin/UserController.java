@@ -1,8 +1,8 @@
 package com.hanfeng.app.controller.admin;
 
 import com.hanfeng.app.common.config.WebConstant;
-import com.hanfeng.app.interceptor.LoginValidator;
 import com.hanfeng.app.model.User;
+import com.hanfeng.app.validator.LoginValidator;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 

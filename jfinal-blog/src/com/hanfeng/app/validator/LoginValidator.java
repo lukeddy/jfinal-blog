@@ -1,4 +1,4 @@
-package com.hanfeng.app.interceptor;
+package com.hanfeng.app.validator;
 
 import com.jfinal.core.Controller;
 import com.jfinal.validate.Validator;
