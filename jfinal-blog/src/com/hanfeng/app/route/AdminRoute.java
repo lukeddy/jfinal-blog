@@ -1,6 +1,7 @@
 package com.hanfeng.app.route;
 
 import com.hanfeng.app.controller.admin.AdminController;
+import com.hanfeng.app.controller.admin.UserController;
 import com.jfinal.config.Routes;
 
 /**
@@ -14,6 +15,7 @@ public class AdminRoute extends Routes {
 
 	public void config() {
 		add("/admin", AdminController.class);
+		add("/admin/user",UserController.class);
 	}
 
 }

@@ -1,5 +1,11 @@
 package com.hanfeng.app.common.config;
 
+import org.bee.tl.ext.jfinal.BeetlRender;
+import org.bee.tl.ext.jfinal.BeetlRenderFactory;
+
+import com.alibaba.druid.filter.stat.StatFilter;
+import com.alibaba.druid.wall.WallFilter;
+import com.hanfeng.app.model.User;
 import com.hanfeng.app.route.AdminRoute;
 import com.hanfeng.app.route.FrontRoute;
 import com.jfinal.config.Constants;
@@ -9,6 +15,8 @@ import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.core.JFinal;
+import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 
 /**
@@ -23,6 +31,13 @@ import com.jfinal.render.ViewType;
  *
  */
 public class BlogConfig extends JFinalConfig{
+	//设置项目是否处于开发模式
+	private boolean isLocal = isDevMode();
+	
+   private boolean isDevMode(){
+        String osName = System.getProperty("os.name");
+        return osName.indexOf("Windows") != -1;
+    }
 
 	/*
 	 * 常量配置(non-Javadoc)
@@ -33,7 +48,9 @@ public class BlogConfig extends JFinalConfig{
 		// 开启开发模式
 		me.setDevMode(true);	
 		//设置默认视图
-		me.setViewType(ViewType.JSP);
+//		me.setViewType(ViewType.JSP);
+		//设置视图为Beetl
+		me.setMainRenderFactory(new com.hanfeng.app.ext.beelt.BeetlRenderFactory(isLocal));
 	}
 
 	/*
@@ -53,7 +70,22 @@ public class BlogConfig extends JFinalConfig{
 	 */
 	@Override
 	public void configPlugin(Plugins me) {
-		// TODO Auto-generated method stub
+		// DruidPlugin
+		DruidPlugin dp = new DruidPlugin("jdbc:mysql://localhost/jfinal_blog", "root", "123456");
+		dp.addFilter(new StatFilter());
+		WallFilter wall = new WallFilter();
+		wall.setDbType("mysql");
+		dp.addFilter(wall);
+		me.add(dp);
+		
+		// ActiveRecordPlugin
+		ActiveRecordPlugin arp = new ActiveRecordPlugin(dp);
+		if (isLocal) {
+			arp.setShowSql(true);//日志打印sql
+		}
+		
+		arp.addMapping("user", User.class);
+		me.add(arp);
 		
 	}
 
@@ -76,7 +108,20 @@ public class BlogConfig extends JFinalConfig{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	@Override
+	public void beforeJFinalStop() {
+		// TODO Auto-generated method stub
+		super.beforeJFinalStop();
+}
 
+	@Override
+	public void afterJFinalStart() {
+		// TODO Auto-generated method stub
+		super.afterJFinalStart();
+	}
+	
 	/*
 	 * 启动项目
 	 */

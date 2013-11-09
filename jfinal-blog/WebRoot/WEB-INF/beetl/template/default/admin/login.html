@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>后台管理</title>   
+  </head>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	<link class="bootstrap library" rel="stylesheet" type="text/css" href="/static/stylesheets/bootstrap/bootstrap.css">
+	<script class="bootstrap library" src="/static/javascripts/jquery/jquery.min.js" type="text/javascript"></script>
+	<script class="bootstrap library" src="/static/javascripts/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+  	<link href="/static/stylesheets/main.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+        <section class="loginBox row-fluid">
+          <section class="span7 left">
+            <h2>后台登录</h2>
+             <form action="/admin/user/login" method="post">
+            <p>账号：<input type="text" name="account" class="login-input"/></p>
+            <p>密码：<input type="password" name="password" class="login-input"/></p>
+            <section class="row-fluid">
+              <section class="span8 lh30"><label><input type="checkbox" name="rememberme" />下次自动登录</label></section>
+          <section class="span1"><input type="submit" value=" 登录 " class="btn btn-primary"></section>
+            </section>
+             <div class="err_message">${msg!} </div>
+             </form>
+            
+          </section>
+          <section class="span5 right">
+            <h2>关于系统</h2>
+            <section>
+              <div class="login-descript">本博客系统基于Jfinal Web框架和Beetl模板引擎开发，欢迎你的使用。</div>
+            </section>
+          </section>
+        </section><!-- /loginBox -->
+    </div> <!-- /container -->
+  </body>
+</html>

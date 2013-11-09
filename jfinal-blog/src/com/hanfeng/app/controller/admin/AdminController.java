@@ -15,6 +15,6 @@ import com.jfinal.core.Controller;
 public class AdminController extends Controller{
 	//默认方法，进入后端首页
     public void index(){
-        renderText("进入后台首页");
+        render("/admin/index.html");
     }
 }

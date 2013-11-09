@@ -11,5 +11,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Druid"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jetty server 8"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jfinal1.5"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/beelt"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MYSQL-JDBC"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/log4j"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
