@@ -1,36 +1,23 @@
-
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>Login Page - Ace Admin</title>
+		<title>Blog Admin</title>
 
 		<meta name="description" content="User login page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<#assign path="${CONTEXT_PATH}">
-		<!--basic styles-->
 
-		<link href="${path}assets/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet" />
-		<link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+		
+
 
 		<!--[if IE 7]>
-		  <link rel="stylesheet" href="/assets/css/font-awesome-ie7.min.css" />
+		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
 		<![endif]-->
 
-		<!--page specific plugin styles-->
-
-		<!--fonts-->
-
-		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
-
-		<!--ace styles-->
-
-		<link rel="stylesheet" href="/assets/css/ace.min.css" />
-		<link rel="stylesheet" href="/assets/css/ace-responsive.min.css" />
-		<link rel="stylesheet" href="/assets/css/ace-skins.min.css" />
+		
 
 		<!--[if lte IE 8]>
-		  <link rel="stylesheet" href="/assets/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
 		<![endif]-->
 
 		<!--inline styles related to this page-->
@@ -46,10 +33,10 @@
 								<div class="center">
 									<h1>
 										<i class="icon-leaf green"></i>
-										<span class="red">HanFeng</span>
-										<span class="white">博客系统</span>
+										<span class="red">Ace</span>
+										<span class="white">Application</span>
 									</h1>
-									<h4 class="blue">&copy; 枫景科技</h4>
+									<h4 class="blue">&copy; Company Name</h4>
 								</div>
 							</div>
 
@@ -62,23 +49,23 @@
 											<div class="widget-main">
 												<h4 class="header blue lighter bigger">
 													<i class="icon-coffee green"></i>
-													请输入个人信息
-
+													Please Enter Your Information
 												</h4>
-												<div class="space-6"> </div>
-													
-												<form action="/admin/user/login" method="post">
+
+												<div class="space-6"></div>
+
+												<form />
 													<fieldset>
 														<label>
 															<span class="block input-icon input-icon-right">
-																<input type="text" class="span12" name="account" placeholder="account" />
+																<input type="text" class="span12" placeholder="Username" />
 																<i class="icon-user"></i>
 															</span>
 														</label>
 
 														<label>
 															<span class="block input-icon input-icon-right">
-																<input type="password" class="span12" name="password" placeholder="password" />
+																<input type="password" class="span12" placeholder="Password" />
 																<i class="icon-lock"></i>
 															</span>
 														</label>
@@ -88,20 +75,21 @@
 														<div class="clearfix">
 															<label class="inline">
 																<input type="checkbox" />
-																<span class="lbl"> 记住我</span>
+																<span class="lbl"> Remember Me</span>
 															</label>
-															<button onclick="return true;" class="width-35 pull-right btn btn-small btn-primary">
+
+															<button onclick="return false;" class="width-35 pull-right btn btn-small btn-primary">
 																<i class="icon-key"></i>
-																登陆
+																Login
 															</button>
 														</div>
 
 														<div class="space-4"></div>
 													</fieldset>
 												</form>
-												<div>${msg!}</div>
+
 												<div class="social-or-login center">
-													<span class="bigger-110">或使用</span>
+													<span class="bigger-110">Or Login Using</span>
 												</div>
 
 												<div class="social-login center">
@@ -123,13 +111,13 @@
 												<div>
 													<a href="#" onclick="show_box('forgot-box'); return false;" class="forgot-password-link">
 														<i class="icon-arrow-left"></i>
-														忘记密码了？
+														I forgot my password
 													</a>
 												</div>
 
 												<div>
 													<a href="#" onclick="show_box('signup-box'); return false;" class="user-signup-link">
-														我要注册！
+														I want to register
 														<i class="icon-arrow-right"></i>
 													</a>
 												</div>
@@ -275,28 +263,28 @@
 		<!--[if !IE]>-->
 
 		<script type="text/javascript">
-			window.jQuery || document.write("<script src='/assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+			window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
 		</script>
 
 		<!--<![endif]-->
 
 		<!--[if IE]>
 <script type="text/javascript">
- window.jQuery || document.write("<script src='/assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
 
 		<script type="text/javascript">
-			if("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+			if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
-		<script src="/assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
 
 		<!--page specific plugin scripts-->
 
 		<!--ace scripts-->
 
-		<script src="/assets/js/ace-elements.min.js"></script>
-		<script src="/assets/js/ace.min.js"></script>
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
 
 		<!--inline scripts related to this page-->
 

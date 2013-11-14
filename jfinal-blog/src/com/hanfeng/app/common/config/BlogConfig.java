@@ -12,6 +12,7 @@ import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.core.JFinal;
+import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.CaseInsensitiveContainerFactory;
@@ -113,8 +114,7 @@ public class BlogConfig extends JFinalConfig{
 	 */
 	@Override
 	public void configHandler(Handlers me) {
-		// TODO Auto-generated method stub
-		
+		  me.add(new ContextPathHandler("CONTEXT_PATH"));//配置项目绝对路径
 	}
 	
 	
