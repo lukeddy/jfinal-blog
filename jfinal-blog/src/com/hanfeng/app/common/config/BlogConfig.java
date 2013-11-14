@@ -1,10 +1,7 @@
 package com.hanfeng.app.common.config;
 
-import org.bee.tl.ext.jfinal.BeetlRender;
-import org.bee.tl.ext.jfinal.BeetlRenderFactory;
-
-import com.alibaba.druid.filter.stat.StatFilter;
-import com.alibaba.druid.wall.WallFilter;
+import com.alibaba.druid.pool.DruidDataSource;
+import com.hanfeng.app.common.utils.ConfigUtil;
 import com.hanfeng.app.model.User;
 import com.hanfeng.app.route.AdminRoute;
 import com.hanfeng.app.route.FrontRoute;
@@ -17,7 +14,7 @@ import com.jfinal.config.Routes;
 import com.jfinal.core.JFinal;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
-import com.jfinal.plugin.druid.DruidPlugin;
+import com.jfinal.plugin.activerecord.CaseInsensitiveContainerFactory;
 import com.jfinal.render.ViewType;
 
 /**
@@ -46,12 +43,20 @@ public class BlogConfig extends JFinalConfig{
 	 */
 	@Override
 	public void configConstant(Constants me) {
+		//加载配置文件
+		ConfigUtil.loadConfig(loadPropertyFile("baseconfig.properties"));
 		// 开启开发模式
-		me.setDevMode(true);	
-		//设置默认视图
-//		me.setViewType(ViewType.JSP);
-		//设置视图为Beetl
-		me.setMainRenderFactory(new com.hanfeng.app.ext.beelt.BeetlRenderFactory(isLocal));
+		if (isLocal) {
+			me.setDevMode(true);	
+		}
+		//设置默认视图 使用Freemarker模板
+		me.setViewType(ViewType.FREE_MARKER);
+		//设置模板视图路径
+		me.setBaseViewPath(WebConstant.WEB_ROOT_DIR);
+		//设置404错误处理
+		me.setError404View(WebConstant.WEB_ROOT_DIR+"/error/404.html");
+		//设置500错误处理
+		me.setError404View(WebConstant.WEB_ROOT_DIR+"/error/500.html");
 	}
 
 	/*
@@ -72,21 +77,23 @@ public class BlogConfig extends JFinalConfig{
 	@Override
 	public void configPlugin(Plugins me) {
 		// DruidPlugin
-		DruidPlugin dp = new DruidPlugin("jdbc:mysql://localhost/jfinal_blog", "root", "123456");
-		dp.addFilter(new StatFilter());
-		WallFilter wall = new WallFilter();
-		wall.setDbType("mysql");
-		dp.addFilter(wall);
-		me.add(dp);
-		
-		// ActiveRecordPlugin
-		ActiveRecordPlugin arp = new ActiveRecordPlugin(dp);
+		DruidDataSource ds = new DruidDataSource();
 		if (isLocal) {
-			arp.setShowSql(true);//日志打印sql
+			ds.setUrl(getProperty("dev.jdbc.url"));
+			ds.setUsername(getProperty("dev.user"));
+			ds.setPassword(getProperty("dev.passwod"));
+		}else {
+			
 		}
 		
-		arp.addMapping("user", User.class);
+		// ActiveRecordPlugin
+		ActiveRecordPlugin arp = new ActiveRecordPlugin(ds).setShowSql(true);
+		arp.setContainerFactory(new CaseInsensitiveContainerFactory(false));
 		me.add(arp);
+		
+		// 添加表匹配
+		arp.addMapping("user", User.class);
+		
 		
 	}
 

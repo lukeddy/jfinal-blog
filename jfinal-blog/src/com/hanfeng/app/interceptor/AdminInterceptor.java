@@ -1,5 +1,6 @@
 package com.hanfeng.app.interceptor;
 
+import com.hanfeng.app.common.config.WebConstant;
 import com.hanfeng.app.model.User;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;
@@ -17,12 +18,12 @@ public class AdminInterceptor implements Interceptor{
 	public void intercept(ActionInvocation ai) {
 		//后台登陆判断
 		 Controller controller = ai.getController();
-		 User user = controller.getSessionAttr("user");//获取session
-//		 if (user!=null && "/admin".equalsIgnoreCase(ai.getActionKey())) {
-		 if (user!=null) {
-			 ai.invoke();
+		 User user = controller.getSessionAttr(WebConstant.USER_SESSION);//获取session
+		 if (user==null) {
+			 controller.redirect("/login");//进行登陆
+//			 return;
 		}else {
-			controller.render("/admin/login.html");
+			ai.invoke();//通过
 		}
 		
 

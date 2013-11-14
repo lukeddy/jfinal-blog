@@ -1,14 +1,14 @@
 package com.hanfeng.app.common.config;
 
 /**
- * 定义全局静态常量
+ * 系统静态常量
  * 
  * @author hanfeng
  *
  */
 public class WebConstant {
-	//beetl
-	public static String BEETL_ROOT_DIR = "/WEB-INF/beetl/template/default";
-	//other
-	 public static String USER_ID_SEPARATOR = "###";
+	 // 模板路径
+	 public static String WEB_ROOT_DIR = "/WEB-INF/views/template/default";
+	 // 用户session key
+	 public static final String USER_SESSION = "user";
 }
